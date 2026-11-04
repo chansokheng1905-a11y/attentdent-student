@@ -130,7 +130,6 @@
                     <button onclick="addNewClassPrompt()" title="បន្ថែមថ្នាក់ថ្មី" class="px-2.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs shrink-0 transition">
                         <i class="fa-solid fa-plus"></i>
                     </button>
-                    <!-- ប៊ូតុងលុបថ្នាក់ (បន្ថែមថ្មី) -->
                     <button onclick="deleteCurrentClassPrompt()" title="លុបថ្នាក់បច្ចុប្បន្ននេះចោល" class="px-2.5 py-2 rounded-xl bg-rose-50 dark:bg-rose-950/50 hover:bg-rose-100 text-rose-600 dark:text-rose-400 text-xs shrink-0 transition">
                         <i class="fa-regular fa-trash-can"></i>
                     </button>
@@ -234,7 +233,10 @@
                     <button onclick="markAllStatus('P')" class="px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold hover:bg-emerald-100 transition">
                         ✓ វត្តមានទាំងអស់
                     </button>
-                    <!-- ប៊ូតុង Clear ឈ្មោះសិស្សចោលទាំងអស់ (បន្ថែមថ្មី) -->
+                    <!-- ប៊ូតុងរបាយការណ៍សង្ខេបថ្ងៃនេះ (អវត្តមាន & ពិន្ទុ) -->
+                    <button onclick="openDailyFocusModal()" class="px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 text-xs font-semibold hover:bg-indigo-100 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-clipboard-list"></i> របាយការណ៍ថ្ងៃនេះ
+                    </button>
                     <button onclick="clearAllStudentsPrompt()" class="px-3 py-1.5 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 border border-rose-200 dark:border-rose-900 text-xs font-semibold hover:bg-rose-100 transition flex items-center gap-1">
                         <i class="fa-solid fa-trash-can"></i> Clear ឈ្មោះទាំងអស់
                     </button>
@@ -267,14 +269,14 @@
             </div>
         </div>
 
-        <!-- ================= VIEW 2: DIRECT SCORE ENTRY (បញ្ចូលពិន្ទុផ្ទាល់) ================= -->
+        <!-- ================= VIEW 2: DIRECT SCORE ENTRY ================= -->
         <div id="pointsViewContainer" class="space-y-6 hidden">
             <div class="glass p-5 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                     <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                         <i class="fa-solid fa-star text-amber-500"></i> បញ្ចូលពិន្ទុផ្ទាល់ប្រចាំថ្ងៃ (Direct Score Entry)
                     </h3>
-                    <p class="text-xs text-slate-500">វាយបញ្ចូលលេខពិន្ទុផ្ទាល់លើសិស្សម្នាក់ៗតាមកាលបរិច្ឆេទដែលបានជ្រើសខាងលើ (Sync ស្វ័យប្រវត្តិ)</p>
+                    <p class="text-xs text-slate-500">វាយបញ្ចូលលេខពិន្ទុផ្ទាល់ ឬចុចប៊ូតុងបូក/ដកពិន្ទុរហ័ស (Sync ស្វ័យប្រវត្តិ)</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <button onclick="quickFillPoints(10)" class="px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-300 border border-amber-200 dark:border-amber-900 text-xs font-semibold hover:bg-amber-100 transition">
@@ -295,8 +297,8 @@
                                 <th class="py-3.5 px-4 w-14 text-center">ល.រ</th>
                                 <th class="py-3.5 px-4">គោត្តនាម និងនាម</th>
                                 <th class="py-3.5 px-4 w-24 text-center">ភេទ</th>
-                                <th class="py-3.5 px-4 text-center w-48">ពិន្ទុថ្ងៃនេះ (វាយបញ្ចូលផ្ទាល់)</th>
-                                <th class="py-3.5 px-4 text-center">ចុចបន្ថែមរហ័ស</th>
+                                <th class="py-3.5 px-4 text-center w-40">ពិន្ទុថ្ងៃនេះ</th>
+                                <th class="py-3.5 px-4 text-center">ចុចបូក / ដកពិន្ទុរហ័ស</th>
                             </tr>
                         </thead>
                         <tbody id="pointsTableBody" class="divide-y divide-slate-200/60 dark:divide-slate-800/60"></tbody>
@@ -305,7 +307,7 @@
             </div>
         </div>
 
-        <!-- ================= VIEW 3: SCORE SUMMARY (សរុបពិន្ទុ សប្តាហ៍/ខែ) ================= -->
+        <!-- ================= VIEW 3: SCORE SUMMARY ================= -->
         <div id="pointSummaryViewContainer" class="space-y-6 hidden">
             <div class="glass p-5 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
@@ -343,7 +345,7 @@
             </div>
         </div>
 
-        <!-- ================= VIEW 4: LESSON JOURNAL (សៀវភៅអត្ថបទ) ================= -->
+        <!-- ================= VIEW 4: LESSON JOURNAL ================= -->
         <div id="journalViewContainer" class="space-y-6 hidden">
             <div class="glass p-5 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-3">
                 <h3 class="text-sm font-bold flex items-center gap-2 text-slate-800 dark:text-slate-100">
@@ -382,7 +384,6 @@
                 </form>
             </div>
 
-            <!-- Lessons History Timeline -->
             <div id="lessonsHistoryList" class="space-y-3"></div>
         </div>
 
@@ -427,6 +428,68 @@
         </div>
 
     </main>
+
+    <!-- Modal: Daily Focus Modal (បង្ហាញតែអ្នកអវត្តមាន & អ្នកបានពិន្ទុ/ដកពិន្ទុ) -->
+    <div id="dailyFocusModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-list text-brand-600"></i> សង្ខេបអវត្តមាន & ពិន្ទុថ្ងៃនេះ
+                    </h3>
+                    <p id="focusModalSubtitle" class="text-xs text-slate-500 mt-0.5">ថ្នាក់ទី... | កាលបរិច្ឆេទ...</p>
+                </div>
+                <button onclick="closeDailyFocusModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <div class="space-y-4 text-xs">
+                <!-- ផ្នែកអវត្តមាន -->
+                <div class="bg-rose-50/60 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/60 p-3.5 rounded-2xl space-y-2">
+                    <div class="flex justify-between items-center font-bold text-rose-700 dark:text-rose-400">
+                        <span><i class="fa-solid fa-user-xmark mr-1"></i> សិស្សអវត្តមាន (ឥតច្បាប់)</span>
+                        <span id="focusAbsentCount" class="px-2 py-0.5 rounded-full bg-rose-200/60 dark:bg-rose-900/60 text-[10px]">0 នាក់</span>
+                    </div>
+                    <ul id="focusAbsentList" class="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300"></ul>
+                </div>
+
+                <!-- ផ្នែកមានច្បាប់ -->
+                <div class="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/60 p-3.5 rounded-2xl space-y-2">
+                    <div class="flex justify-between items-center font-bold text-amber-700 dark:text-amber-400">
+                        <span><i class="fa-solid fa-envelope mr-1"></i> សិស្សមានច្បាប់</span>
+                        <span id="focusPermissionCount" class="px-2 py-0.5 rounded-full bg-amber-200/60 dark:bg-amber-900/60 text-[10px]">0 នាក់</span>
+                    </div>
+                    <ul id="focusPermissionList" class="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300"></ul>
+                </div>
+
+                <!-- ផ្នែកសិស្សទទួលបានពិន្ទុ (+) -->
+                <div class="bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/60 p-3.5 rounded-2xl space-y-2">
+                    <div class="flex justify-between items-center font-bold text-emerald-700 dark:text-emerald-400">
+                        <span><i class="fa-solid fa-star mr-1"></i> សិស្សបានពិន្ទុល្អ (+)</span>
+                        <span id="focusScoredCount" class="px-2 py-0.5 rounded-full bg-emerald-200/60 dark:bg-emerald-900/60 text-[10px]">0 នាក់</span>
+                    </div>
+                    <ul id="focusScoredList" class="space-y-1 text-slate-700 dark:text-slate-300"></ul>
+                </div>
+
+                <!-- ផ្នែកសិស្សត្រូវបានដកពិន្ទុ (-) -->
+                <div id="focusDeductedSection" class="hidden bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-3.5 rounded-2xl space-y-2">
+                    <div class="flex justify-between items-center font-bold text-rose-600">
+                        <span><i class="fa-solid fa-circle-minus mr-1"></i> សិស្សត្រូវដកពិន្ទុ (-)</span>
+                        <span id="focusDeductedCount" class="px-2 py-0.5 rounded-full bg-rose-100 text-[10px]">0 នាក់</span>
+                    </div>
+                    <ul id="focusDeductedList" class="space-y-1 text-slate-700 dark:text-slate-300"></ul>
+                </div>
+            </div>
+
+            <div class="flex gap-2 pt-2">
+                <button onclick="copyDailyFocusText()" id="copyFocusBtn" class="flex-1 py-2.5 text-xs font-semibold rounded-xl bg-brand-600 hover:bg-brand-700 text-white shadow-md flex items-center justify-center gap-1.5 transition">
+                    <i class="fa-regular fa-copy"></i> Copy ផ្ញើ Telegram
+                </button>
+                <button onclick="closeDailyFocusModal()" class="px-4 py-2.5 text-xs font-medium rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    បិទ
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal: Select Excel Sheet -->
     <div id="excelSheetModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
@@ -476,16 +539,19 @@
         </div>
     </div>
 
-    <!-- Modal: Fast Copy-Paste -->
+    <!-- Modal: Fast Copy-Paste (Updated with 'ស' and 'ប' Gender Detector) -->
     <div id="pasteModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
             <div class="flex items-center justify-between">
-                <h3 class="text-base font-bold flex items-center gap-2 text-slate-900 dark:text-slate-100">
-                    <i class="fa-solid fa-paste text-violet-600"></i> Paste ចម្លងបញ្ជីឈ្មោះរហ័ស
-                </h3>
+                <div>
+                    <h3 class="text-base font-bold flex items-center gap-2 text-slate-900 dark:text-slate-100">
+                        <i class="fa-solid fa-paste text-violet-600"></i> Paste ចម្លងបញ្ជីឈ្មោះរហ័ស
+                    </h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">ស្គាល់ភេទដោយស្វ័យប្រវត្តិ៖ <strong>ស, ប, ស្រី, ប្រុស, F, M</strong></p>
+                </div>
                 <button onclick="closePasteModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            <textarea id="pasteTextInput" rows="6" placeholder="សុខ វិសាល ប្រុស&#10;ចាន់ ធារី ស្រី&#10;កែវ សុវណ្ណ" class="w-full p-3 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+            <textarea id="pasteTextInput" rows="6" placeholder="ឧទាហរណ៍៖&#10;១. សុខ វិសាល ប&#10;២. ចាន់ ធារី ស&#10;កែវ សុវណ្ណ ស្រី" class="w-full p-3 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
             
             <div class="flex items-center justify-between text-xs">
                 <label class="flex items-center gap-1.5 cursor-pointer">
@@ -695,7 +761,6 @@
             }
         }
 
-        // មុខងារលុបថ្នាក់ចោល (បន្ថែមថ្មី)
         async function deleteCurrentClassPrompt() {
             const savedClasses = JSON.parse(localStorage.getItem('smartclass_classes') || '["10A", "10B", "11A", "12A"]');
             if (savedClasses.length <= 1) {
@@ -703,7 +768,7 @@
                 return;
             }
 
-            const confirmMsg = confirm(`តើលោកគ្រូពិតជាចង់លុប «ថ្នាក់ទី ${currentClass}» ចេញពីប្រព័ន្ធមែនទេ?\n(បញ្ជាក់៖ ឈ្មោះសិស្ស និងទិន្នន័យក្នុងថ្នាក់នេះក៏អាចនឹងបាត់បង់ផងដែរ)`);
+            const confirmMsg = confirm(`តើលោកគ្រូពិតជាចង់លុប «ថ្នាក់ទី ${currentClass}» ចេញពីប្រព័ន្ធមែនទេ?`);
             if (!confirmMsg) return;
 
             const updatedClasses = savedClasses.filter(c => c !== currentClass);
@@ -751,7 +816,6 @@
                 });
         }
 
-        // មុខងារ Clear ឈ្មោះសិស្សចោលទាំងអស់ (បន្ថែមថ្មី)
         async function clearAllStudentsPrompt() {
             if (students.length === 0) {
                 alert("ក្នុងថ្នាក់នេះគ្មានឈ្មោះសិស្សសម្រាប់លុបឡើយ!");
@@ -795,7 +859,138 @@
             });
         }
 
-        // ================= DIRECT SCORE ENTRY (បញ្ចូលពិន្ទុផ្ទាល់) =================
+        // ================= DAILY FOCUS MODAL (សង្ខេបអវត្តមាន & ពិន្ទុ) =================
+        function openDailyFocusModal() {
+            document.getElementById('focusModalSubtitle').innerText = `ថ្នាក់ទី ${currentClass} | កាលបរិច្ឆេទ៖ ${currentDateStr}`;
+
+            const absentListEl = document.getElementById('focusAbsentList');
+            const permListEl = document.getElementById('focusPermissionList');
+            const scoredListEl = document.getElementById('focusScoredList');
+            const deductedListEl = document.getElementById('focusDeductedList');
+            const deductedSection = document.getElementById('focusDeductedSection');
+
+            absentListEl.innerHTML = '';
+            permListEl.innerHTML = '';
+            scoredListEl.innerHTML = '';
+            deductedListEl.innerHTML = '';
+
+            const absents = [];
+            const permissions = [];
+            const scored = [];
+            const deducted = [];
+
+            students.forEach(s => {
+                const st = attendanceRecord[s.id] || 'P';
+                if (st === 'A') absents.push(s);
+                if (st === 'L') permissions.push(s);
+
+                const score = dailyPointsRecord[s.id];
+                if (score !== undefined && score !== null && score !== '') {
+                    const num = Number(score);
+                    if (num > 0) scored.push({ ...s, score: num });
+                    else if (num < 0) deducted.push({ ...s, score: num });
+                }
+            });
+
+            document.getElementById('focusAbsentCount').innerText = `${absents.length} នាក់`;
+            document.getElementById('focusPermissionCount').innerText = `${permissions.length} នាក់`;
+            document.getElementById('focusScoredCount').innerText = `${scored.length} នាក់`;
+
+            if (absents.length === 0) {
+                absentListEl.innerHTML = '<li class="text-slate-400 italic">គ្មានសិស្សអវត្តមានទេ ✓</li>';
+            } else {
+                absents.forEach(s => {
+                    const li = document.createElement('li');
+                    li.className = "font-semibold";
+                    li.innerText = `${s.name} (${s.gender})`;
+                    absentListEl.appendChild(li);
+                });
+            }
+
+            if (permissions.length === 0) {
+                permListEl.innerHTML = '<li class="text-slate-400 italic">គ្មានសិស្សមានច្បាប់ទេ</li>';
+            } else {
+                permissions.forEach(s => {
+                    const li = document.createElement('li');
+                    li.className = "font-semibold";
+                    li.innerText = `${s.name} (${s.gender})`;
+                    permListEl.appendChild(li);
+                });
+            }
+
+            if (scored.length === 0) {
+                scoredListEl.innerHTML = '<li class="text-slate-400 italic">មិនទាន់មានការដាក់ពិន្ទុនៅឡើយ</li>';
+            } else {
+                scored.forEach(s => {
+                    const li = document.createElement('li');
+                    li.className = "flex justify-between items-center py-0.5 border-b border-emerald-100 dark:border-emerald-950/60";
+                    li.innerHTML = `<span>${s.name} (${s.gender})</span> <strong class="text-emerald-600 font-bold font-mono">+${s.score} ពិន្ទុ</strong>`;
+                    scoredListEl.appendChild(li);
+                });
+            }
+
+            if (deducted.length > 0) {
+                deductedSection.classList.remove('hidden');
+                document.getElementById('focusDeductedCount').innerText = `${deducted.length} នាក់`;
+                deducted.forEach(s => {
+                    const li = document.createElement('li');
+                    li.className = "flex justify-between items-center py-0.5 border-b border-rose-100 dark:border-rose-950/60";
+                    li.innerHTML = `<span>${s.name} (${s.gender})</span> <strong class="text-rose-600 font-bold font-mono">${s.score} ពិន្ទុ</strong>`;
+                    deductedListEl.appendChild(li);
+                });
+            } else {
+                deductedSection.classList.add('hidden');
+            }
+
+            document.getElementById('dailyFocusModal').classList.remove('hidden');
+            document.getElementById('dailyFocusModal').classList.add('flex');
+        }
+
+        function closeDailyFocusModal() {
+            document.getElementById('dailyFocusModal').classList.add('hidden');
+            document.getElementById('dailyFocusModal').classList.remove('flex');
+        }
+
+        function copyDailyFocusText() {
+            const absents = [];
+            const permissions = [];
+            const scored = [];
+            const deducted = [];
+
+            students.forEach(s => {
+                const st = attendanceRecord[s.id] || 'P';
+                if (st === 'A') absents.push(`${s.name} (${s.gender})`);
+                if (st === 'L') permissions.push(`${s.name} (${s.gender})`);
+
+                const score = dailyPointsRecord[s.id];
+                if (score !== undefined && score !== null && score !== '') {
+                    const num = Number(score);
+                    if (num > 0) scored.push(`${s.name}: +${num} ពិន្ទុ`);
+                    else if (num < 0) deducted.push(`${s.name}: ${num} ពិន្ទុ`);
+                }
+            });
+
+            let text = `📢 របាយការណ៍ប្រចាំថ្ងៃ (${currentDateStr})\n`;
+            text += `🏫 វិទ្យាល័យ ជា ស៊ីម ឈូកវ៉ា | ថ្នាក់ទី ${currentClass}\n`;
+            text += `👨‍🏫 គ្រូបង្រៀន៖ ចាន់ សុខហេង\n`;
+            text += `--------------------------------\n`;
+            text += `❌ សិស្សអវត្តមាន (ឥតច្បាប់) [${absents.length} នាក់]៖\n${absents.length > 0 ? absents.map((n, i) => `${i+1}. ${n}`).join('\n') : '- គ្មាន'}\n\n`;
+            text += `⚠️ សិស្សមានច្បាប់ [${permissions.length} នាក់]៖\n${permissions.length > 0 ? permissions.map((n, i) => `${i+1}. ${n}`).join('\n') : '- គ្មាន'}\n\n`;
+            text += `⭐ សិស្សបានពិន្ទុល្អ (+) [${scored.length} នាក់]៖\n${scored.length > 0 ? scored.map((n, i) => `${i+1}. ${n}`).join('\n') : '- គ្មាន'}\n`;
+            if (deducted.length > 0) {
+                text += `\n🔻 សិស្សត្រូវដកពិន្ទុ (-) [${deducted.length} នាក់]៖\n${deducted.map((n, i) => `${i+1}. ${n}`).join('\n')}\n`;
+            }
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copyFocusBtn');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> បានចម្លងជោគជ័យ!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy ផ្ញើ Telegram';
+                }, 1500);
+            });
+        }
+
+        // ================= DIRECT SCORE ENTRY (បញ្ចូល & ដកពិន្ទុ) =================
         let unsubscribePoints = null;
         function loadPointsForDate() {
             currentDateStr = document.getElementById('commonDateInput').value;
@@ -836,18 +1031,22 @@
                     </td>
                     <td class="py-3 px-4 text-center">
                         <div class="flex items-center justify-center">
-                            <input type="number" step="0.5" min="0" max="100" value="${currentScore}" 
+                            <input type="number" step="0.5" value="${currentScore}" 
                                 placeholder="0" 
                                 onchange="saveDirectScore('${student.id}', this.value)"
                                 class="w-24 px-3 py-1.5 text-center font-bold text-sm rounded-xl border border-amber-300 dark:border-amber-700 bg-amber-50/40 dark:bg-amber-950/20 text-amber-700 dark:text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
                         </div>
                     </td>
                     <td class="py-3 px-4 text-center">
-                        <div class="flex items-center justify-center gap-1.5">
-                            <button onclick="modifyScore('${student.id}', 1)" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-bold transition">+1</button>
-                            <button onclick="modifyScore('${student.id}', 2)" class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 text-xs font-bold transition">+2</button>
-                            <button onclick="modifyScore('${student.id}', 5)" class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 text-xs font-bold transition">+5</button>
-                            <button onclick="modifyScore('${student.id}', 10)" class="px-2.5 py-1 rounded-lg bg-amber-50 text-amber-600 hover:bg-amber-100 text-xs font-bold transition">+10</button>
+                        <div class="flex items-center justify-center gap-1.5 flex-wrap">
+                            <button onclick="modifyScore('${student.id}', 1)" class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 text-xs font-bold transition">+1</button>
+                            <button onclick="modifyScore('${student.id}', 2)" class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 text-xs font-bold transition">+2</button>
+                            <button onclick="modifyScore('${student.id}', 5)" class="px-2 py-1 rounded-lg bg-emerald-100 text-emerald-700 hover:bg-emerald-200 text-xs font-bold transition">+5</button>
+                            <span class="text-slate-300">|</span>
+                            <!-- ប៊ូតុងដកពិន្ទុ -->
+                            <button onclick="modifyScore('${student.id}', -1)" title="ដក ១ ពិន្ទុ" class="px-2 py-1 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 text-xs font-bold transition">-1</button>
+                            <button onclick="modifyScore('${student.id}', -2)" title="ដក ២ ពិន្ទុ" class="px-2 py-1 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 text-xs font-bold transition">-2</button>
+                            <button onclick="modifyScore('${student.id}', -5)" title="ដក ៥ ពិន្ទុ" class="px-2 py-1 rounded-lg bg-rose-100 text-rose-700 hover:bg-rose-200 text-xs font-bold transition">-5</button>
                         </div>
                     </td>
                 `;
@@ -872,7 +1071,7 @@
 
         async function modifyScore(studentId, delta) {
             const current = dailyPointsRecord[studentId] || 0;
-            const updated = Math.max(0, current + delta);
+            const updated = current + delta;
             await saveDirectScore(studentId, updated);
             renderPointsTable();
         }
@@ -896,7 +1095,7 @@
             await db.collection('classes').doc(currentClass).collection('daily_scores').doc(currentDateStr).delete();
         }
 
-        // ================= SCORE SUMMARY SYSTEM (សរុបពិន្ទុ សប្តាហ៍/ខែ) =================
+        // ================= SCORE SUMMARY SYSTEM =================
         function onPointPeriodTypeChange() {
             const type = document.getElementById('pointSummaryPeriodType').value;
             const mInput = document.getElementById('pointSummaryMonthInput');
@@ -1047,7 +1246,7 @@
             XLSX.writeFile(wb, `បូកសរុបពិន្ទុ_ថ្នាក់${currentClass}.xlsx`);
         }
 
-        // ================= LESSON JOURNAL (សៀវភៅអត្ថបទ) =================
+        // ================= LESSON JOURNAL =================
         let unsubscribeLessons = null;
         function listenToLessons() {
             if (unsubscribeLessons) unsubscribeLessons();
@@ -1127,7 +1326,7 @@
             await db.collection('classes').doc(currentClass).collection('lessons').doc(id).delete();
         }
 
-        // ================= PERIOD SUMMARY SYSTEM (ATTENDANCE) =================
+        // ================= PERIOD SUMMARY SYSTEM =================
         function onPeriodTypeChange() {
             const type = document.getElementById('summaryPeriodType').value;
             const mInput = document.getElementById('summaryMonthInput');
@@ -1292,7 +1491,7 @@
             XLSX.writeFile(wb, `បូកសរុបវត្តមាន_ជាស៊ីមឈូកវ៉ា_ថ្នាក់${currentClass}.xlsx`);
         }
 
-        // ================= FAST PASTE LIST HANDLER =================
+        // ================= FAST PASTE LIST HANDLER (ស្គាល់ 'ស' និង 'ប') =================
         function openPasteModal() {
             document.getElementById('pasteModal').classList.remove('hidden');
             document.getElementById('pasteModal').classList.add('flex');
@@ -1303,6 +1502,7 @@
             document.getElementById('pasteModal').classList.remove('flex');
             document.getElementById('pasteTextInput').value = '';
         }
+
         async function confirmPasteImport() {
             const text = document.getElementById('pasteTextInput').value.trim();
             const replace = document.getElementById('pasteReplaceCheck').checked;
@@ -1324,17 +1524,27 @@
 
             lines.forEach((line) => {
                 let cleanLine = line.trim();
-                cleanLine = cleanLine.replace(/^[\d]+[\.\-\s]+/, '').trim();
-                if (cleanLine) {
-                    let gender = 'ប្រុស';
-                    if (cleanLine.includes(' ស្រី') || cleanLine.endsWith('ស្រី') || cleanLine.includes('(ស្រី)') || cleanLine.toLowerCase().endsWith(' f')) {
-                        gender = 'ស្រី';
-                        cleanLine = cleanLine.replace(/[\(\s]?(ស្រី|f|F)[\)]?$/, '').trim();
-                    } else if (cleanLine.includes(' ប្រុស') || cleanLine.endsWith('ប្រុស') || cleanLine.includes('(ប្រុស)') || cleanLine.toLowerCase().endsWith(' m')) {
-                        gender = 'ប្រុស';
-                        cleanLine = cleanLine.replace(/[\(\s]?(ប្រុស|m|M)[\)]?$/, '').trim();
-                    }
+                if (!cleanLine) return;
 
+                // លុបលេខរៀងនាំមុខ (ឧ. 1. 2- ឬ 1 )
+                cleanLine = cleanLine.replace(/^[\d]+[\.\-\s\)\/]+/, '').trim();
+
+                // ពិនិត្យរកភេទពីចុងបន្ទាត់ ឬក្នុងបន្ទាត់ (ស្គាល់៖ ស, ប, ស្រី, ប្រុស, F, M)
+                let gender = 'ប្រុស';
+
+                // បំលែងអក្សរតូចធំ និងចន្លោះដកឃ្លា
+                const femaleRegex = /[\t\s,\(\[\{]+(ស|ស្រី|f|female)[\)\]\}]?$/i;
+                const maleRegex = /[\t\s,\(\[\{]+(ប|ប្រុស|m|male)[\)\]\}]?$/i;
+
+                if (femaleRegex.test(cleanLine)) {
+                    gender = 'ស្រី';
+                    cleanLine = cleanLine.replace(femaleRegex, '').trim();
+                } else if (maleRegex.test(cleanLine)) {
+                    gender = 'ប្រុស';
+                    cleanLine = cleanLine.replace(maleRegex, '').trim();
+                }
+
+                if (cleanLine) {
                     const newDoc = studentsColl.doc();
                     batch.set(newDoc, {
                         name: cleanLine,
@@ -1461,12 +1671,17 @@
                 const row = rows[i];
                 if (row && row[nameCol]) {
                     const name = String(row[nameCol]).trim();
-                    const gender = row[genderCol] ? String(row[genderCol]).trim() : 'ប្រុស';
+                    const rawG = row[genderCol] ? String(row[genderCol]).trim() : 'ប្រុស';
+
+                    let gender = 'ប្រុស';
+                    if (rawG === 'ស្រី' || rawG === 'ស' || rawG.toLowerCase() === 'f') {
+                        gender = 'ស្រី';
+                    }
 
                     const newDoc = studentsColl.doc();
                     batch.set(newDoc, {
                         name: name,
-                        gender: (gender === 'F' || gender === 'ស្រី') ? 'ស្រី' : 'ប្រុស',
+                        gender: gender,
                         order: startOrder + addedCount + 1,
                         createdAt: new Date().toISOString()
                     });
