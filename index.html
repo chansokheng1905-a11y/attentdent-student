@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags បិទ Cache កុំឱ្យទូរសព្ទចងចាំ File ចាស់ -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>ប្រព័ន្ធគ្រប់គ្រងការបង្រៀន វត្តមាន & ពិន្ទុ - វិទ្យាល័យ ជា ស៊ីម ឈូកវ៉ា</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -89,27 +92,27 @@
 
             <!-- Header Nav Tabs & Actions -->
             <div class="flex items-center space-x-2 sm:space-x-3">
-                <div class="flex bg-slate-100 dark:bg-slate-900 p-1 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold">
-                    <button onclick="switchView('daily')" id="tabDaily" class="px-3 py-1.5 rounded-lg bg-brand-600 text-white shadow-sm transition">
+                <div class="flex bg-slate-100 dark:bg-slate-900 p-1 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold overflow-x-auto">
+                    <button onclick="switchView('daily')" id="tabDaily" class="px-3 py-1.5 rounded-lg bg-brand-600 text-white shadow-sm transition shrink-0">
                         កត់វត្តមាន
                     </button>
-                    <button onclick="switchView('points')" id="tabPoints" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+                    <button onclick="switchView('points')" id="tabPoints" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition shrink-0">
                         ⭐ បញ្ចូលពិន្ទុ
                     </button>
-                    <button onclick="switchView('pointsummary')" id="tabPointSummary" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+                    <button onclick="switchView('pointsummary')" id="tabPointSummary" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition shrink-0">
                         📊 សរុបពិន្ទុ
                     </button>
-                    <button onclick="switchView('journal')" id="tabJournal" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+                    <button onclick="switchView('journal')" id="tabJournal" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition shrink-0">
                         📖 សៀវភៅអត្ថបទ
                     </button>
-                    <button onclick="switchView('summary')" id="tabSummary" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+                    <button onclick="switchView('summary')" id="tabSummary" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition shrink-0">
                         បូកវត្តមាន
                     </button>
                 </div>
-                <button onclick="window.print()" title="បោះពុម្ព" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <button onclick="window.print()" title="បោះពុម្ព" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0">
                     <i class="fa-solid fa-print text-sm"></i>
                 </button>
-                <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
                 </button>
             </div>
@@ -125,6 +128,7 @@
                 <div class="md:col-span-4 flex items-center gap-1.5">
                     <label class="text-xs font-semibold text-slate-500 shrink-0">ជ្រើសរើសថ្នាក់:</label>
                     <select id="classSelect" onchange="onClassChange()" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <option value="8C2">ថ្នាក់ទី 8C2</option>
                         <option value="10A">ថ្នាក់ទី ១០ក (10A)</option>
                         <option value="10B">ថ្នាក់ទី ១០ខ (10B)</option>
                         <option value="11A">ថ្នាក់ទី ១១ក (11A)</option>
@@ -167,7 +171,7 @@
                 </div>
 
                 <!-- Action Menu -->
-                <div class="md:col-span-4 flex items-center justify-end gap-2">
+                <div class="md:col-span-4 flex items-center justify-end gap-2 flex-wrap">
                     <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" class="hidden" onchange="handleExcelUpload(event)">
                     <button onclick="document.getElementById('excelFileInput').click()" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium shadow-sm flex items-center gap-1.5 transition" title="បញ្ចូលពី File Excel">
                         <i class="fa-solid fa-file-excel"></i>
@@ -641,7 +645,7 @@
         const db = firebase.firestore();
 
         // State variables
-        let currentClass = '10A';
+        let currentClass = '8C2';
         let currentDateStr = '';
         let currentView = 'daily';
         let students = [];
@@ -674,8 +678,8 @@
 
         function handleCommonDateChange() {
             currentDateStr = document.getElementById('commonDateInput').value;
-            if (currentView === 'daily') loadAttendanceForDate();
-            if (currentView === 'points') loadPointsForDate();
+            loadAttendanceForDate();
+            loadPointsForDate();
         }
 
         // Switch Tabs
@@ -685,9 +689,9 @@
             tabs.forEach(t => {
                 const btn = document.getElementById(`tab${t}`);
                 if (t.toLowerCase() === view.toLowerCase()) {
-                    btn.className = "px-3 py-1.5 rounded-lg bg-brand-600 text-white shadow-sm transition";
+                    btn.className = "px-3 py-1.5 rounded-lg bg-brand-600 text-white shadow-sm transition shrink-0";
                 } else {
-                    btn.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition";
+                    btn.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-brand-600 transition shrink-0";
                 }
             });
 
@@ -728,7 +732,7 @@
 
         // Classes Management
         function loadClasses() {
-            const savedClasses = JSON.parse(localStorage.getItem('smartclass_classes') || '["10A", "10B", "11A", "12A"]');
+            const savedClasses = JSON.parse(localStorage.getItem('smartclass_classes') || '["8C2", "10A", "10B", "11A", "12A"]');
             const select = document.getElementById('classSelect');
             select.innerHTML = '';
             savedClasses.forEach(cls => {
@@ -745,10 +749,10 @@
         }
 
         function addNewClassPrompt() {
-            const newCls = prompt("សូមវាយឈ្មោះថ្នាក់ថ្មី (ឧ. 10C ឬ 11B):");
+            const newCls = prompt("សូមវាយឈ្មោះថ្នាក់ថ្មី (ឧ. 8C1, 8C2 ឬ 11B):");
             if (newCls && newCls.trim()) {
                 const clean = newCls.trim().toUpperCase();
-                const savedClasses = JSON.parse(localStorage.getItem('smartclass_classes') || '["10A", "10B", "11A", "12A"]');
+                const savedClasses = JSON.parse(localStorage.getItem('smartclass_classes') || '["8C2", "10A", "10B", "11A", "12A"]');
                 if (!savedClasses.includes(clean)) {
                     savedClasses.push(clean);
                     localStorage.setItem('smartclass_classes', JSON.stringify(savedClasses));
@@ -756,16 +760,16 @@
                     loadClasses();
                     listenToClassStudents();
                     listenToLessons();
-                    if (currentView === 'daily') loadAttendanceForDate();
-                    else if (currentView === 'points') loadPointsForDate();
-                    else if (currentView === 'summary') loadSummaryData();
+                    loadAttendanceForDate();
+                    loadPointsForDate();
+                    if (currentView === 'summary') loadSummaryData();
                     else if (currentView === 'pointsummary') loadPointSummaryData();
                 }
             }
         }
 
         async function deleteCurrentClassPrompt() {
-            const savedClasses = JSON.parse(localStorage.getItem('smartclass_classes') || '["10A", "10B", "11A", "12A"]');
+            const savedClasses = JSON.parse(localStorage.getItem('smartclass_classes') || '["8C2", "10A", "10B", "11A", "12A"]');
             if (savedClasses.length <= 1) {
                 alert("មិនអាចលុបបានទេ ព្រោះប្រព័ន្ធត្រូវរក្សាទុកថ្នាក់យ៉ាងតិចមួយ!");
                 return;
@@ -780,9 +784,9 @@
             loadClasses();
             listenToClassStudents();
             listenToLessons();
-            if (currentView === 'daily') loadAttendanceForDate();
-            else if (currentView === 'points') loadPointsForDate();
-            else if (currentView === 'summary') loadSummaryData();
+            loadAttendanceForDate();
+            loadPointsForDate();
+            if (currentView === 'summary') loadSummaryData();
             else if (currentView === 'pointsummary') loadPointSummaryData();
 
             alert("បានលុបថ្នាក់ដោយជោគជ័យ!");
@@ -792,9 +796,9 @@
             currentClass = document.getElementById('classSelect').value;
             listenToClassStudents();
             listenToLessons();
-            if (currentView === 'daily') loadAttendanceForDate();
-            else if (currentView === 'points') loadPointsForDate();
-            else if (currentView === 'summary') loadSummaryData();
+            loadAttendanceForDate();
+            loadPointsForDate();
+            if (currentView === 'summary') loadSummaryData();
             else if (currentView === 'pointsummary') loadPointSummaryData();
         }
 
@@ -863,7 +867,19 @@
         }
 
         // ================= DAILY FOCUS MODAL (សង្ខេបអវត្តមាន & ពិន្ទុ) =================
-        function openDailyFocusModal() {
+        async function openDailyFocusModal() {
+            // ទាញយកពិន្ទុផ្ទាល់ពី Cloud មុនពេលបង្ហាញ ដើម្បីធានាថាលោតទិន្នន័យត្រឹមត្រូវ ១០០%
+            try {
+                const scoreDoc = await db.collection('classes').doc(currentClass).collection('daily_scores').doc(currentDateStr).get();
+                if (scoreDoc.exists) {
+                    dailyPointsRecord = scoreDoc.data().scores || {};
+                } else {
+                    dailyPointsRecord = {};
+                }
+            } catch (e) {
+                console.error("Fetch daily score error:", e);
+            }
+
             document.getElementById('focusModalSubtitle').innerText = `ថ្នាក់ទី ${currentClass} | កាលបរិច្ឆេទ៖ ${currentDateStr}`;
 
             const absentListEl = document.getElementById('focusAbsentList');
@@ -1535,7 +1551,6 @@
                 // ពិនិត្យរកភេទពីចុងបន្ទាត់ ឬក្នុងបន្ទាត់ (ស្គាល់៖ ស, ប, ស្រី, ប្រុស, F, M)
                 let gender = 'ប្រុស';
 
-                // បំលែងអក្សរតូចធំ និងចន្លោះដកឃ្លា
                 const femaleRegex = /[\t\s,\(\[\{]+(ស|ស្រី|f|female)[\)\]\}]?$/i;
                 const maleRegex = /[\t\s,\(\[\{]+(ប|ប្រុស|m|male)[\)\]\}]?$/i;
 
